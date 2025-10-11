@@ -64,6 +64,9 @@ namespace StarterAssets
 		private float _jumpTimeoutDelta;
 		private float _fallTimeoutDelta;
 
+		[Header("Custom Settings")]
+		public GameObject flashLight;
+
 	
 #if ENABLE_INPUT_SYSTEM
 		private PlayerInput _playerInput;
@@ -115,6 +118,7 @@ namespace StarterAssets
 			GravityCheck();
 			GroundedCheck();
 			Move();
+			Flashlight();
 		}
 
 		private void LateUpdate()
@@ -213,6 +217,9 @@ namespace StarterAssets
 			}
 			else
 			{
+				// reset the jump timeout timer
+				_jumpTimeoutDelta = JumpTimeout;
+
 				// fall timeout
 				if (_fallTimeoutDelta >= 0.0f)
 				{
@@ -226,8 +233,17 @@ namespace StarterAssets
 				_verticalVelocity += Gravity * Time.deltaTime;
 			}
 		}
+		private void Flashlight()
+		{
+			if(_input.flashLight)
+			{
+				flashLight.SetActive(!flashLight.activeInHierarchy);
+				_input.flashLight = false;
+			}
+		}
 
-		private static float ClampAngle(float lfAngle, float lfMin, float lfMax)
+
+        private static float ClampAngle(float lfAngle, float lfMin, float lfMax)
 		{
 			if (lfAngle < -360f) lfAngle += 360f;
 			if (lfAngle > 360f) lfAngle -= 360f;

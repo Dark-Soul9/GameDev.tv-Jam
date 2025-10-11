@@ -10,6 +10,7 @@ namespace StarterAssets
 		[Header("Character Input Values")]
 		public Vector2 move;
 		public Vector2 look;
+		public bool flashLight;
 
 		[Header("Movement Settings")]
 		public bool analogMovement;
@@ -31,10 +32,16 @@ namespace StarterAssets
 				LookInput(value.Get<Vector2>());
 			}
 		}
+
+        public void OnFlashlight(InputValue value)
+        {
+            FlashlightInput(value.isPressed);
+			Debug.Log("flashlight pressed");
+        }
 #endif
 
 
-		public void MoveInput(Vector2 newMoveDirection)
+        public void MoveInput(Vector2 newMoveDirection)
 		{
 			move = newMoveDirection;
 		} 
@@ -43,8 +50,12 @@ namespace StarterAssets
 		{
 			look = newLookDirection;
 		}
-		
-		private void OnApplicationFocus(bool hasFocus)
+
+        public void FlashlightInput(bool newFlashlightState)
+        {
+            flashLight = newFlashlightState;
+        }
+        private void OnApplicationFocus(bool hasFocus)
 		{
 			SetCursorState(cursorLocked);
 		}
