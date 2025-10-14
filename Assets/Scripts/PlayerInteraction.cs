@@ -1,10 +1,10 @@
 using StarterAssets;
 using UnityEngine;
-using UnityEngine.Windows;
 
 public class PlayerInteraction : MonoBehaviour
 {
     [SerializeField] private float interactDistance = 3f;
+    public LayerMask interactionLayer;
     private Camera playerCam;
     private StarterAssetsInputs _input;
 
@@ -17,11 +17,11 @@ public class PlayerInteraction : MonoBehaviour
     void Update()
     {
         Ray ray = new Ray(playerCam.transform.position, playerCam.transform.forward);
-        if (Physics.Raycast(ray, out RaycastHit hit, interactDistance))
+        if (Physics.Raycast(ray, out RaycastHit hit, interactDistance, interactionLayer))
         {
             if (hit.collider.TryGetComponent(out IInteractable interactable))
             {
-                //UI, "Press E"
+                UIManager.Instance.Prompt(true);
                 if (_input.interact)
                 {
                     interactable.Interact();
