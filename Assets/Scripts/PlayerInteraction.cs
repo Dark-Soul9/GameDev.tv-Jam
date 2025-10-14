@@ -1,14 +1,17 @@
+using StarterAssets;
 using UnityEngine;
+using UnityEngine.Windows;
 
 public class PlayerInteraction : MonoBehaviour
 {
     [SerializeField] private float interactDistance = 3f;
-    [SerializeField] private KeyCode interactKey = KeyCode.E;
     private Camera playerCam;
+    private StarterAssetsInputs _input;
 
     void Start()
     {
         playerCam = Camera.main;
+        _input = GetComponent<StarterAssetsInputs>();
     }
 
     void Update()
@@ -19,9 +22,10 @@ public class PlayerInteraction : MonoBehaviour
             if (hit.collider.TryGetComponent(out IInteractable interactable))
             {
                 //UI, "Press E"
-                if (Input.GetKeyDown(interactKey))
+                if (_input.interact)
                 {
                     interactable.Interact();
+                    _input.interact = false;
                 }
             }
         }

@@ -11,6 +11,7 @@ namespace StarterAssets
 		public Vector2 move;
 		public Vector2 look;
 		public bool flashLight;
+		public bool interact;
 
 		[Header("Movement Settings")]
 		public bool analogMovement;
@@ -36,8 +37,12 @@ namespace StarterAssets
         public void OnFlashlight(InputValue value)
         {
             FlashlightInput(value.isPressed);
-			Debug.Log("flashlight pressed");
         }
+        public void OnInteract(InputValue value)
+        {
+            InteractInput(value.isPressed);
+        }
+
 #endif
 
 
@@ -54,6 +59,10 @@ namespace StarterAssets
         public void FlashlightInput(bool newFlashlightState)
         {
             flashLight = newFlashlightState;
+        }
+        public void InteractInput(bool newInteractState)
+        {
+            interact = newInteractState;
         }
         private void OnApplicationFocus(bool hasFocus)
 		{

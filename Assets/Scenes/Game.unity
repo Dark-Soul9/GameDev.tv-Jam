@@ -20,7 +20,7 @@ RenderSettings:
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.5566038, g: 0.50146854, b: 0.50146854, a: 1}
+  m_AmbientSkyColor: {r: 0.023529412, g: 0.023529412, b: 0.023529412, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
@@ -3288,6 +3288,8 @@ GameObject:
   - component: {fileID: 3170350229342957510}
   - component: {fileID: 7895746662076774326}
   - component: {fileID: 2779223605317155387}
+  - component: {fileID: 7895746662076774328}
+  - component: {fileID: 7895746662076774327}
   m_Layer: 6
   m_Name: MazeDoor
   m_TagString: Untagged
@@ -3803,6 +3805,39 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6265747878441013479}
   m_Mesh: {fileID: -4743248551214507825, guid: d0ce1703d56dce741bc3de39b7c9c2e3, type: 3}
+--- !u!114 &7895746662076774327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6265747878441013479}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7b331081efec044495de8ca9d97aff0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!65 &7895746662076774328
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6265747878441013479}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.18235111, y: 2.6443915, z: 1.3995056}
+  m_Center: {x: 0.027581692, y: -0.00000071525574, z: 0.000045776367}
 --- !u!33 &7966188308542577178
 MeshFilter:
   m_ObjectHideFlags: 0
