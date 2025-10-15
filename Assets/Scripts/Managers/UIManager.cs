@@ -21,14 +21,30 @@ public class UIManager : MonoBehaviour
 
     public bool isUIActive;
     public TextMeshProUGUI candyCount;
+    public TextMeshProUGUI sanityCount;
     public GameObject pickUpPrompt;
+    public GameObject doorPrompt;
     public void UpdateCandyCount()
     {
         candyCount.text = GlobalVariableManager.Instance.candyCount.ToString();
     }
 
-    public void Prompt(bool value)
+    public void InputPrompt(bool value, string interactableName)
     {
-        pickUpPrompt.SetActive(value);
+        switch(interactableName)
+        {
+            case "Door":
+                doorPrompt.SetActive(value);
+                break;
+            case "Candy":
+                pickUpPrompt.SetActive(value);
+                break;
+        }
+    }
+    
+    
+    public void UpdateSanity(float value)
+    {
+        sanityCount.text = Mathf.CeilToInt(value).ToString();
     }
 }

@@ -18,15 +18,32 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
+    public PlayerManager playerManager;
+
     public bool isGameStarted;
     public bool isGamePaused;
-    public void BackToHome()
+
+    private void Start()
+    {
+        playerManager = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerManager>();
+    }
+    public void StartingArea()
     {
         //communicate with global variable manager and update it
         //load the home scene
     }
-    public void IntoTheMaze()
+    public void MazeArea()
     {
         //load the maze scene
+    }
+
+    public void PlayerDeathSequence()
+    {
+        playerManager.playerMovement.enabled = false;
+        playerManager.playerFlashlight.enabled = false;
+        playerManager.playerInteraction.enabled = false;
+        playerManager.playerStats.enabled = false;
+        //Stop enemy AI
+        //Stop enemy Sounds
     }
 }

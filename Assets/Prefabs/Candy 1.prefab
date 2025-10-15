@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5673769675154453040}
   - component: {fileID: 2871803812639484010}
   - component: {fileID: 62845264450764854}
+  - component: {fileID: 8174167005083029872}
   m_Layer: 7
   m_Name: Candy 1
   m_TagString: Untagged
@@ -124,3 +125,17 @@ MonoBehaviour:
   amount: 1
   globalVariableManager: {fileID: 0}
   uiManager: {fileID: 0}
+  interactableName: Candy
+--- !u!114 &8174167005083029872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4286409005424246961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdda88223a2533b498912a947ab79bc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactableName: Candy

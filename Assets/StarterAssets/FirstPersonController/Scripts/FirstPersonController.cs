@@ -65,17 +65,7 @@ namespace StarterAssets
 		private float _jumpTimeoutDelta;
 		private float _fallTimeoutDelta;
 
-		[Header("Custom Settings")]
-		public GameObject flashLight;
-		public EnemyManager enemyManager;
-		public bool flashLightOn;
-        
-		// Flashlight Fade System
-        private Light flashLightSource;
-        private bool isFading = false;
-        private bool canUseFlashlight = true;
-        private float originalIntensity;
-        [SerializeField] private float fadeDuration = 1.5f; // Slow fade
+		
 
 
 
@@ -122,9 +112,7 @@ namespace StarterAssets
 			// reset our timeouts on start
 			_jumpTimeoutDelta = JumpTimeout;
 			_fallTimeoutDelta = FallTimeout;
-			enemyManager = GameObject.Find("EnemyManager").GetComponent<EnemyManager>();
-            flashLightSource = flashLight.GetComponentInChildren<Light>();
-            originalIntensity = flashLightSource.intensity;
+			
         }
 
 		private void Update()
@@ -132,8 +120,7 @@ namespace StarterAssets
 			GravityCheck();
 			GroundedCheck();
 			Move();
-			Flashlight();
-			flashLightOn = flashLight.activeInHierarchy;
+			
 		}
 
 		private void LateUpdate()
@@ -248,63 +235,6 @@ namespace StarterAssets
 				_verticalVelocity += Gravity * Time.deltaTime;
 			}
 		}
-        private void Flashlight()
-        {
-            if (_input.flashLight && canUseFlashlight && !isFading)
-            {
-                _input.flashLight = false;
-
-                // If flashlight is already ON, Fade it OFF
-                if (flashLight.activeInHierarchy)
-                {
-                    StartCoroutine(FadeOutFlashlight());
-                }
-                else
-                {
-                    // Turn ON instantly
-					flashLightOn = true;
-                    flashLight.SetActive(true);
-                    flashLightSource.intensity = originalIntensity;
-                }
-            }
-
-            // Your enemy logic stays untouched
-            if (flashLight.activeInHierarchy)
-            {
-                enemyManager.TrySpawnEnemy();
-            }
-            enemyManager.EnemyStateHandler(flashLightOn);
-        }
-        private IEnumerator FadeOutFlashlight()
-        {
-            //flashLightOn = false;
-            isFading = true;
-            canUseFlashlight = false;
-
-            float startIntensity = flashLightSource.intensity;
-            float time = 0f;
-
-            while (time < fadeDuration)
-            {
-				flashLightOn = false;
-				time += Time.deltaTime;
-                float t = time / fadeDuration;
-                flashLightSource.intensity = Mathf.Lerp(startIntensity, 0f, t);
-                yield return null;
-            }
-
-            flashLightSource.intensity = 0f;
-            flashLight.SetActive(false);
-
-            // Lock small delay so user can't insta-toggle
-            yield return new WaitForSeconds(0.2f);
-
-            canUseFlashlight = true;
-            isFading = false;
-        }
-
-
-
         private static float ClampAngle(float lfAngle, float lfMin, float lfMax)
 		{
 			if (lfAngle < -360f) lfAngle += 360f;

@@ -21,11 +21,11 @@ public class PlayerInteraction : MonoBehaviour
         {
             if (hit.collider.TryGetComponent(out IInteractable interactable))
             {
-                UIManager.Instance.Prompt(true);
+                UIManager.Instance.InputPrompt(true, hit.collider.GetComponent<InteractableType>().interactableName);
                 if (_input.interact)
                 {
-                    interactable.Interact();
                     _input.interact = false;
+                    interactable.Interact();
                 }
             }
         }
