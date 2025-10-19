@@ -39,11 +39,18 @@ public class GameManager : MonoBehaviour
 
     public void PlayerDeathSequence()
     {
+        SoundManager.Instance.PlayOneShot(playerManager.GetComponent<PlayerSounds>().audioSource, playerManager.GetComponent<PlayerSounds>().playerDeath);
+        SoundManager.Instance.StopLoop(playerManager.GetComponent<AudioSource>());
+        SoundManager.Instance.PlayOneShot(playerManager.playerFlashlight.flashLight.GetComponent<AudioSource>(), playerManager.playerFlashlight.flicker);
         playerManager.playerMovement.enabled = false;
         playerManager.playerFlashlight.enabled = false;
         playerManager.playerInteraction.enabled = false;
         playerManager.playerStats.enabled = false;
         //Stop enemy AI
         //Stop enemy Sounds
+    }
+    public void DestroyEnemy(GameObject enemy)
+    {
+        Destroy(enemy);
     }
 }

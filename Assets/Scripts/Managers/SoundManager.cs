@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SoundManager : MonoBehaviour
@@ -19,6 +17,42 @@ public class SoundManager : MonoBehaviour
         }
     }
     #endregion
+    public AudioSource musicChannel;
+    public AudioSource sfxChannel;
+    public AudioSource ambienceChannel;
+    public AudioSource windChannel;
 
+    public void PlayOneShot(AudioClip clip)
+    {
+        sfxChannel.PlayOneShot(clip);
+    }
+    public void PlayOneShot(AudioSource source,AudioClip clip)
+    {
+        source.PlayOneShot(clip);
+    }
+    public void PlayMusic(AudioClip clip)
+    {
+        musicChannel.clip = clip;
+        musicChannel.Play();
+    }
+    public void PlayLoop(AudioSource source, AudioClip clip)
+    {
+        if(source.isPlaying)
+        {
+            return;
+        }
+        source.clip = clip;
+        source.Play();
+    }
+    public void StopLoop(AudioSource source)
+    {
+        source.Stop();
+        source.clip = null;
+    }
 
+    public void StopMusic()
+    {
+        musicChannel.Stop();
+        musicChannel.clip = null;
+    }
 }

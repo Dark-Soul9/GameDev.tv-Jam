@@ -22,12 +22,19 @@ public class PlayerInteraction : MonoBehaviour
             if (hit.collider.TryGetComponent(out IInteractable interactable))
             {
                 UIManager.Instance.InputPrompt(true, hit.collider.GetComponent<InteractableType>().interactableName);
-                if (_input.interact)
+                if (_input.interact && hit.collider.GetComponent<InteractableType>().interactableName != "OutofBounds")
                 {
-                    _input.interact = false;
                     interactable.Interact();
+                    hit.collider.enabled = false;
+                    UIManager.Instance.HidePrompt(hit.collider);
                 }
+                _input.interact = false;
             }
+        }
+        else
+        {
+            _input.interact = false;
+            UIManager.Instance.HidePrompt();
         }
     }
 }

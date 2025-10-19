@@ -20,4 +20,7 @@ public class GlobalVariableManager : MonoBehaviour
 #endregion
     
     public int candyCount;
+    public bool hasKey;
+    public bool foundKey;
+    public bool foundDoor;
 }

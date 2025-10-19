@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
@@ -21,9 +22,15 @@ public class UIManager : MonoBehaviour
 
     public bool isUIActive;
     public TextMeshProUGUI candyCount;
-    public TextMeshProUGUI sanityCount;
+    public Slider sanityCount;
     public GameObject pickUpPrompt;
     public GameObject doorPrompt;
+    public GameObject outofBounds;
+    public TextMeshProUGUI dialogue;
+    public Collider currentCollider;
+
+    public string[] dialoguesToShow;
+    public string dialogueToShow;
     public void UpdateCandyCount()
     {
         candyCount.text = GlobalVariableManager.Instance.candyCount.ToString();
@@ -39,12 +46,45 @@ public class UIManager : MonoBehaviour
             case "Candy":
                 pickUpPrompt.SetActive(value);
                 break;
+            case "OutofBounds":
+                if (outofBounds.activeInHierarchy)
+                    return;
+                dialogueToShow = dialoguesToShow[Random.Range(0, dialoguesToShow.Length)];
+                outofBounds.GetComponent<TextMeshProUGUI>().text = dialogueToShow;
+                outofBounds.SetActive(value);
+                break;
         }
     }
-    
-    
+    public void HidePrompt(Collider collider)
+    {
+        doorPrompt.SetActive(false);
+        pickUpPrompt.SetActive(false);
+        currentCollider = collider;
+        Invoke("EnableCollider", 2.5f);
+    }
+    void EnableCollider()
+    {
+        currentCollider.enabled = true;
+    }
+    public void HidePrompt()
+    {
+        doorPrompt.SetActive(false);
+        pickUpPrompt.SetActive(false);
+        outofBounds.SetActive(false);
+    }
+
+    public void ShowPlayerDialogue(string text)
+    {
+        dialogue.gameObject.SetActive(true);
+        dialogue.text = text;
+        Invoke("HidePlayerDialogue", 2.5f); 
+    }
+    public void HidePlayerDialogue()
+    {
+        dialogue.text = "";
+    }
     public void UpdateSanity(float value)
     {
-        sanityCount.text = Mathf.CeilToInt(value).ToString();
+        sanityCount.value = value;
     }
 }

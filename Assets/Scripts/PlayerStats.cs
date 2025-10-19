@@ -1,8 +1,9 @@
-using StarterAssets;
 using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
+    public bool inMaze;
+
     public float sanity = 100f;
     public float maxSanity = 100f;
     public float minSanity = 0f;
@@ -23,6 +24,10 @@ public class PlayerStats : MonoBehaviour
     }
     private void Update()
     {
+        if(sanity == minSanity && inMaze)
+        {
+            GetComponent<PlayerAnimations>().PlayDeathAnimation();
+        }
         if(sanity < maxSanity && GetComponent<PlayerFlashlight>().flashLightOn)
         {
             if(increaseTime > increaseInterval)

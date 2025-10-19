@@ -17,4 +17,16 @@ public class PlayerManager : MonoBehaviour
         playerStats = GetComponent<PlayerStats>();
         playerAnimations = GetComponent<PlayerAnimations>();
     }
+
+    public void AtCutsceneStart()
+    {
+        playerMovement.enabled = false;
+        playerFlashlight.enabled = false;
+        playerInteraction.enabled = false;
+        playerStats.enabled = false;
+    }
+    public void AtCutsceneEnd()
+    {
+        //Game Manager Load Scene
+    }
 }
