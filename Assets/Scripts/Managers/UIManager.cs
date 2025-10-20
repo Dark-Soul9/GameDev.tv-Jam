@@ -31,6 +31,15 @@ public class UIManager : MonoBehaviour
 
     public string[] dialoguesToShow;
     public string dialogueToShow;
+
+    public GameObject mazeTutorial;
+    public GameObject flashLightTutorial;
+    public GameObject sanityTutorial;
+
+    public void Start()
+    {
+        UpdateCandyCount();
+    }
     public void UpdateCandyCount()
     {
         candyCount.text = GlobalVariableManager.Instance.candyCount.ToString();
@@ -86,5 +95,17 @@ public class UIManager : MonoBehaviour
     public void UpdateSanity(float value)
     {
         sanityCount.value = value;
+    }
+    public void ShowFlashLightTutorial(bool value)
+    {
+        flashLightTutorial.SetActive(value);
+    }
+    public void ShowSanityTutorial(bool value)
+    {
+        sanityTutorial.SetActive(value);
+    }    
+    public void ShowMazeTutorial(bool value)
+    {
+        mazeTutorial.SetActive(value);
     }
 }

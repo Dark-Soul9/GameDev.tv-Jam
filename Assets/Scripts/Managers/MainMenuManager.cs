@@ -8,13 +8,13 @@ public class MainMenuManager : MonoBehaviour
     public void NewGame()
     {
         SaveManager.StartNewGame();
+        GlobalVariableManager.Instance.NewGameData();
         SceneLoader.Instance.NextScene();
     }
     public void ContinueGame()
     {
         if(SaveManager.SaveExists())
         {
-            GlobalVariableManager.Instance.GetSaveData();
             SceneLoader.Instance.NextScene();
         }
     }

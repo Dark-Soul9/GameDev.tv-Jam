@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         playerManager = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerManager>();
+        GlobalVariableManager.Instance.GetSaveData();
     }
     public void StartingArea()
     {
