@@ -23,4 +23,23 @@ public class GlobalVariableManager : MonoBehaviour
     public bool hasKey;
     public bool foundKey;
     public bool foundDoor;
+
+    public GameObject continueButton;
+
+    public void Start()
+    {
+        if (continueButton != null)
+        {
+            continueButton.GetComponent<BoxCollider>().enabled = SaveManager.SaveExists();
+        }
+    }
+
+    public void GetSaveData()
+    {
+
+    }
+    public void SetSaveData()
+    {
+
+    }
 }
