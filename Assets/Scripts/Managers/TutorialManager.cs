@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class TutorialManager : MonoBehaviour
@@ -38,11 +36,18 @@ public class TutorialManager : MonoBehaviour
     }
     public void HideSanityTutorial()
     {
+        GameManager.Instance.EndTutorial();
         Time.timeScale = 1f;
         UIManager.Instance.ShowSanityTutorial(false);
     }
     public void ShowMazeTutorial()
     {
+        if(!GlobalVariableManager.Instance.mazeTutorial)
+        {
+            GameManager.Instance.EndTutorial();
+            return;
+        }
+        GameManager.Instance.PlayerTutorial();
         UIManager.Instance.ShowMazeTutorial(true);
         SaveManager.SaveBool("MazeTutorial", false);
         Time.timeScale = 0f;

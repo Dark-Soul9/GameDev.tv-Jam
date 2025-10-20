@@ -6,22 +6,22 @@ public class HauntedDoor : MonoBehaviour, IInteractable
     public bool unlocked;
     public bool isPickupItem = false;
     public string interactableName;
+    public InteractableType interactable;
     public Animator animator;
 
 
     private void Start()
     {
-        interactableName = GetComponent<InteractableType>().interactableName;
-        animator = GetComponent<Animator>();
+        interactable = GetComponent<InteractableType>();
+        interactableName = interactable.interactableName;
         uiManager = UIManager.Instance;
     }
     public void Interact()
     {
-        if(animator != null)
-        {
-            animator.SetTrigger("Open");
-        }
+        animator.SetTrigger("HauntedHouse");
+        SoundManager.Instance.PlayOneShot(GetComponent<AudioSource>(), interactable.interactableSound);
         uiManager.InputPrompt(false, interactableName);
+        gameObject.GetComponent<MeshCollider>().enabled = false;
         Debug.Log($"Interacted with: {gameObject.name}");
     }
 }

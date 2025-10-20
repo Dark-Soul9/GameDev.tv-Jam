@@ -17,8 +17,9 @@ public class GlobalVariableManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
     }
-#endregion
-    
+    #endregion
+
+    public bool gameEnd;
     public int candyCount;
     public bool hasKey;
     public bool foundKey;

@@ -36,6 +36,8 @@ public class UIManager : MonoBehaviour
     public GameObject flashLightTutorial;
     public GameObject sanityTutorial;
 
+    public GameObject pauseMenu;
+
     public void Start()
     {
         UpdateCandyCount();
@@ -79,7 +81,10 @@ public class UIManager : MonoBehaviour
     {
         doorPrompt.SetActive(false);
         pickUpPrompt.SetActive(false);
-        outofBounds.SetActive(false);
+        if(outofBounds!=null)
+        {
+            outofBounds.SetActive(false);
+        }
     }
 
     public void ShowPlayerDialogue(string text)
@@ -107,5 +112,10 @@ public class UIManager : MonoBehaviour
     public void ShowMazeTutorial(bool value)
     {
         mazeTutorial.SetActive(value);
+    }
+
+    public void PauseMenu(bool value)
+    {
+        pauseMenu.SetActive(value);
     }
 }

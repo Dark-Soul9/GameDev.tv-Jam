@@ -26,7 +26,10 @@ public class PlayerInteraction : MonoBehaviour
                 {
                     interactable.Interact();
                     hit.collider.enabled = false;
-                    UIManager.Instance.HidePrompt(hit.collider);
+                    if(hit.collider.GetComponent<InteractableType>().reInteratable)
+                    {
+                        UIManager.Instance.HidePrompt(hit.collider);
+                    }
                 }
                 _input.interact = false;
             }

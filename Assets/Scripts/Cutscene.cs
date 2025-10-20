@@ -1,75 +1,123 @@
 using TMPro;
 using UnityEngine;
+using System.Collections.Generic;
 
 public class Cutscene : MonoBehaviour
 {
-    public Animator cameraAnim;
-    public Animator doorAnim;
-    public Animator ladyAnim;
-    public Animator uiAnim;
+    public Animator hauntedDoorAnim;
+    public AudioClip hauntedDoorSound;
+    public Animator mazeDoorAnim;
+    public AudioClip mazeDoorSound;
+    public TextMeshProUGUI cutsceneDialogue;
+    [Header("OutsideScene")]
+    public List<string> outsideDialogues = new List<string>();
+    [Header("HauntedHouseScene")]
+    public List<string> hauntedHouseDialogues = new List<string>();
+    [Header("MazeStartingScene")]
+    public List<string> mazeStartingDialogues = new List<string>();
+    [Header("MazeDoorScene")]
+    public List<string> mazeDoorDialogues = new List<string>();
 
-    public GameObject textBox;
-    public TextMeshProUGUI dialogueText;
-
-    public AudioSource doorSound;
-    public AudioClip knockSound;
-    public AudioClip doorOpeningSound;
-    
-    //enable the script in interact()
-    private void Start()
+    public void OpenHauntedDoor()
     {
-        dialogueText = textBox.GetComponent<TextMeshProUGUI>();
-        CutsceneManager.Instance.StartCutscene(this);
+        hauntedDoorAnim.SetTrigger("OpenHaunted");
+        SoundManager.Instance.PlayOneShot(hauntedDoorAnim.GetComponent<AudioSource>(), hauntedDoorSound);
     }
-
-    public void LookCamera()
+    public void OpenMazeDoor()
     {
-        cameraAnim.enabled = true;
-        cameraAnim.SetTrigger("Focus");
+        mazeDoorAnim.SetTrigger("OpenMaze");
+        SoundManager.Instance.PlayOneShot(mazeDoorAnim.GetComponent<AudioSource>(), mazeDoorSound);
     }
-    public void OpenDoor()
+    public void OutsideOne()
     {
-        doorAnim.enabled = true;
+        cutsceneDialogue.text = outsideDialogues[0];
     }
-    public void OldLady()
+    public void OutsideTwo()
     {
-        ladyAnim.enabled = true;
+        cutsceneDialogue.text = outsideDialogues[1];
     }
-    public void ShowUI()
+    public void OutsideThree()
     {
-        uiAnim.SetTrigger("Show UI");
+        cutsceneDialogue.text = outsideDialogues[2];
     }
-    public void HideUI()
+    public void OutsideFour()
     {
-        uiAnim.enabled = true;
+        cutsceneDialogue.text = outsideDialogues[3];
     }
-    public void ShowDialogue()
+    public void OutsideFive()
     {
-        textBox.SetActive(true);
+        cutsceneDialogue.text = outsideDialogues[4];
     }
-    public void HideDialogue()
+    public void OutsideSix()
     {
-        dialogueText.text = "";
-        textBox.SetActive(false);
+        cutsceneDialogue.text = outsideDialogues[5];
     }
-    public void KnockSound()
+    public void HauntedOne()
     {
-        doorSound.PlayOneShot(knockSound);
+        cutsceneDialogue.text = hauntedHouseDialogues[0];
     }
-    public void OpeningSound()
+    public void HauntedTwo()
     {
-        doorSound.PlayOneShot(doorOpeningSound);
+        cutsceneDialogue.text = hauntedHouseDialogues[1];
     }
-    public void DialogueOne(string text)
+    public void HauntedThree()
     {
-        dialogueText.text = text;
+        cutsceneDialogue.text = hauntedHouseDialogues[2];
     }
-    public void DialogueTwo(string text)
+    public void HauntedFour()
     {
-        dialogueText.text = text;
+        cutsceneDialogue.text = hauntedHouseDialogues[3];
     }
-    public void DialogueThree(string text)
+    public void HauntedFive()
     {
-        dialogueText.text = text;
+        cutsceneDialogue.text = hauntedHouseDialogues[4];
+    }
+    public void MazeOne()
+    {
+        cutsceneDialogue.text = mazeStartingDialogues[0];
+    }
+    public void MazeTwo()
+    {
+        cutsceneDialogue.text = mazeStartingDialogues[1];
+    }
+    public void MazeThree()
+    {
+        cutsceneDialogue.text = mazeStartingDialogues[2];
+    }
+    public void MazeFour()
+    {
+        cutsceneDialogue.text = mazeStartingDialogues[3];
+    }
+    public void MazeFive()
+    {
+        cutsceneDialogue.text = mazeStartingDialogues[4];
+    }
+    public void MazeDoorOne()
+    {
+        cutsceneDialogue.text = mazeDoorDialogues[0];
+    }
+    public void MazeDoorTwo()
+    {
+        cutsceneDialogue.text = mazeDoorDialogues[1];
+    }
+    public void MazeDoorThree()
+    {
+        cutsceneDialogue.text = mazeDoorDialogues[2];
+    }
+    public void DisablePlayer()
+    {
+        GameManager.Instance.PlayerCutscene();
+    }
+    public void EnablePlayerOutside()
+    {
+        GameManager.Instance.PlayerCutsceneEndOutside();
+    }
+    public void EnablePlayerMaze()
+    {
+        GameManager.Instance.PlayerCutsceneEnd();
+    }
+    public void StartTutorial()
+    {
+        TutorialManager.Instance.ShowMazeTutorial();
     }
 }

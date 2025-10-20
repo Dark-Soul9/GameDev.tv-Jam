@@ -22,6 +22,64 @@ public class SoundManager : MonoBehaviour
     public AudioSource ambienceChannel;
     public AudioSource windChannel;
 
+    public void StopAllSounds()
+    {
+        if(musicChannel != null)
+        {
+            musicChannel.volume = 0;
+        }
+        if (sfxChannel != null)
+        {
+            sfxChannel.volume = 0;
+        }
+        if (ambienceChannel != null)
+        {
+            ambienceChannel.volume = 0;
+        }
+        if (windChannel != null)
+        {
+            windChannel.volume = 0;
+        }
+    }
+    public void PauseAllSounds()
+    {
+        if (musicChannel != null)
+        {
+            musicChannel.Pause();
+        }
+        if (sfxChannel != null)
+        {
+            sfxChannel.Pause();
+        }
+        if (ambienceChannel != null)
+        {
+            ambienceChannel.Pause();
+        }
+        if (windChannel != null)
+        {
+            windChannel.Pause();
+        }
+    }
+    public void UnPauseAllSounds()
+    {
+        if (musicChannel != null)
+        {
+            musicChannel.Play();
+        }
+        if (sfxChannel != null)
+        {
+            sfxChannel.Play();
+        }
+        if (ambienceChannel != null)
+        {
+            ambienceChannel.Play();
+        }
+        if (windChannel != null)
+        {
+            windChannel.Play();
+        }
+    }
+
     public void PlayOneShot(AudioClip clip)
     {
         sfxChannel.PlayOneShot(clip);

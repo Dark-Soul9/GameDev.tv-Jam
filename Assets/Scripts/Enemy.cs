@@ -27,6 +27,10 @@ public class Enemy : MonoBehaviour
     }
     private void Start()
     {
+        if(GlobalVariableManager.Instance.gameEnd)
+        {
+            Destroy(gameObject);
+        }
         SoundManager.Instance.StopMusic();
         SoundManager.Instance.PlayOneShot(enemyMouth, enemyScreech);
     }

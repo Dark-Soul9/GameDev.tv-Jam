@@ -16,7 +16,7 @@ public class EnemyManager : MonoBehaviour
 
     public void TrySpawnEnemy()
     {
-        if(GameObject.FindGameObjectWithTag("Enemy"))
+        if(GameObject.FindGameObjectWithTag("Enemy") || GlobalVariableManager.Instance.gameEnd)
         {
             return;
         }

@@ -9,6 +9,7 @@ public class MazeDoor : MonoBehaviour, IInteractable
     public string hasFoundKey;
     public string hasNotFoundKey;
     public string dialogueToShow;
+    public Animator animator;
 
     private void Start()
     {
@@ -26,7 +27,11 @@ public class MazeDoor : MonoBehaviour, IInteractable
             uiManager.ShowPlayerDialogue(dialogueToShow);
             return;
         }
+        animator.SetTrigger("MazeDoor");
+        SoundManager.Instance.PlayOneShot(GetComponent<AudioSource>(), interactable.interactableSound);
         uiManager.InputPrompt(false, interactableName);
+        gameObject.GetComponent<BoxCollider>().enabled = false;
+        Debug.Log($"Interacted with: {gameObject.name}");
         //Cutscene Start
     }
 }
