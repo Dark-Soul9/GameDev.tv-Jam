@@ -26,6 +26,7 @@ public class UIManager : MonoBehaviour
     public GameObject pickUpPrompt;
     public GameObject doorPrompt;
     public GameObject outofBounds;
+    public GameObject skipPrompt;
     public TextMeshProUGUI dialogue;
     public Collider currentCollider;
 
@@ -65,6 +66,10 @@ public class UIManager : MonoBehaviour
                 outofBounds.SetActive(value);
                 break;
         }
+    }
+    public void ShowSkipPrompt(bool value)
+    {
+        skipPrompt.SetActive(value);
     }
     public void HidePrompt(Collider collider)
     {

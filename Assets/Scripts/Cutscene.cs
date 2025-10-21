@@ -120,4 +120,12 @@ public class Cutscene : MonoBehaviour
     {
         TutorialManager.Instance.ShowMazeTutorial();
     }
+    public void OnCutsceneStart()
+    {
+        GameManager.Instance.isAnimPlaying = true;
+    }
+    public void OnCutsceneEnd()
+    {
+        GameManager.Instance.isAnimPlaying = false;
+    }
 }

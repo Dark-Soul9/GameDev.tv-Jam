@@ -9,7 +9,7 @@ public class EnterHouseTrigger : MonoBehaviour
         if(other.gameObject.CompareTag("Player"))
         {
             GlobalVariableManager.Instance.gameEnd = true;
-            SceneLoader.Instance.NextScene();
+            SceneLoader.Instance.NewScene();
         }
     }
 }

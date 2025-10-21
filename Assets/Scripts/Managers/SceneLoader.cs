@@ -25,13 +25,19 @@ public class SceneLoader : MonoBehaviour
     public int loadDelay;
     public Animator animator;
 
-    public void NextScene()
+    public void NewScene()
     {
         GlobalVariableManager.Instance.SetSaveData();
         animator.SetTrigger("LoadOut");
-        StartCoroutine(LoadDelay(loadDelay));
+        StartCoroutine(LoadDelay(sceneToLoad,loadDelay));
     }
-    IEnumerator LoadDelay(float delay)
+    public void ContinueScene(int sceneIndex)
+    {
+        GlobalVariableManager.Instance.SetSaveData();
+        animator.SetTrigger("LoadOut");
+        StartCoroutine(LoadDelay(sceneIndex, loadDelay));
+    }
+    IEnumerator LoadDelay(int sceneIndex, float delay)
     {
         yield return new WaitForSeconds(loadDelay);
         SceneManager.LoadScene(sceneToLoad);

@@ -1029,6 +1029,8 @@ MonoBehaviour:
   sfxChannel: {fileID: 393273463}
   ambienceChannel: {fileID: 0}
   windChannel: {fileID: 0}
+  enemyAudio: {fileID: 0}
+  enemyMouth: {fileID: 0}
 --- !u!4 &393273462
 Transform:
   m_ObjectHideFlags: 0
@@ -1154,7 +1156,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.1
+  m_Volume: 0.25
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1450,6 +1452,142 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 571142361}
+  m_CullTransparentMesh: 1
+--- !u!1 &612845201
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 612845202}
+  - component: {fileID: 612845204}
+  - component: {fileID: 612845203}
+  m_Layer: 5
+  m_Name: Skip Prompt
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &612845202
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 612845201}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1291259976}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 0, y: 100}
+  m_SizeDelta: {x: 200, y: 50}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &612845203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 612845201}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: Press 'Enter' to skip
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: d2fe6fa57ae769f48843f6c662dc0064, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 36
+  m_fontSizeBase: 36
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_TextWrappingMode: 0
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 0
+  m_ActiveFontFeatures: 6e72656b
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_EmojiFallbackSupport: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 1
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &612845204
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 612845201}
   m_CullTransparentMesh: 1
 --- !u!1 &680306785
 GameObject:
@@ -2892,6 +3030,7 @@ RectTransform:
   - {fileID: 1622194559}
   - {fileID: 1407362372}
   - {fileID: 1967214579}
+  - {fileID: 612845202}
   - {fileID: 111943240}
   - {fileID: 2080386264}
   - {fileID: 336496502}
@@ -3616,7 +3755,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -4593,6 +4732,7 @@ MonoBehaviour:
   pickUpPrompt: {fileID: 1407362369}
   doorPrompt: {fileID: 1967214578}
   outofBounds: {fileID: 0}
+  skipPrompt: {fileID: 612845201}
   dialogue: {fileID: 111943241}
   currentCollider: {fileID: 0}
   dialoguesToShow: []
@@ -5333,6 +5473,10 @@ MonoBehaviour:
   playerManager: {fileID: 4954951792101213919}
   isGameStarted: 0
   isGamePaused: 0
+  isPlayerDead: 0
+  isAnimPlaying: 0
+  isMaze: 1
+  cutsceneAnimator: {fileID: 2090494494}
 --- !u!4 &1974188231
 Transform:
   m_ObjectHideFlags: 0
@@ -5740,7 +5884,7 @@ Transform:
   m_GameObject: {fileID: 3555286559693350865}
   serializedVersion: 2
   m_LocalRotation: {x: 0.65877634, y: -0.25693116, z: 0.2569311, w: 0.6587765}
-  m_LocalPosition: {x: 11.879946, y: 0.07025087, z: -2.4741807}
+  m_LocalPosition: {x: 12.202, y: 0.07025087, z: -2.4741807}
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9522,11 +9666,11 @@ MonoBehaviour:
   sanity: 100
   maxSanity: 100
   minSanity: 0
-  increaseRate: 2
+  increaseRate: 5
   increaseInterval: 0.25
   increaseTime: 0
-  decreaseRate: 5
-  decreaseInterval: 0.6
+  decreaseRate: 2
+  decreaseInterval: 0.1
   decreaseTime: 0
 --- !u!1 &6558588841814319278
 GameObject:
@@ -9830,7 +9974,7 @@ Transform:
   m_GameObject: {fileID: 8132661020787923654}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7069629, y: 0.014265423, z: -0.014265423, w: 0.70696294}
-  m_LocalPosition: {x: 11.879946, y: 0.07025087, z: -2.4741807}
+  m_LocalPosition: {x: 11.879946, y: 0.07025087, z: -3.032}
   m_LocalScale: {x: 0.010000001, y: 0.01, z: 0.009999999}
   m_ConstrainProportionsScale: 0
   m_Children: []

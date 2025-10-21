@@ -69,7 +69,7 @@ public class PlayerFlashlight : MonoBehaviour
         }
 
         // Your enemy logic stays untouched
-        if (flashLight.activeInHierarchy)
+        if (flashLight.activeInHierarchy && playerStats.sanity == playerStats.maxSanity)
         {
             enemyManager.TrySpawnEnemy();
         }

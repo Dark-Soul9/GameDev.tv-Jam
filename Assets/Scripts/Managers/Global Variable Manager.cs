@@ -16,6 +16,10 @@ public class GlobalVariableManager : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(gameObject);
         }
+        if(SaveManager.SaveExists())
+        {
+            GetSaveData();
+        }
     }
     #endregion
 

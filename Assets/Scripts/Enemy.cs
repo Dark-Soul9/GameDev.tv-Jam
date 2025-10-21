@@ -33,6 +33,7 @@ public class Enemy : MonoBehaviour
         }
         SoundManager.Instance.StopMusic();
         SoundManager.Instance.PlayOneShot(enemyMouth, enemyScreech);
+        SoundManager.Instance.FeedAudioSources(enemyMouth, enemyAudio);
     }
 
     private void Update()
@@ -41,6 +42,11 @@ public class Enemy : MonoBehaviour
         {
             HandleStateAudio();   // Trigger audio only when state changes
             lastState = currentState;
+        }
+        if(GameManager.Instance.isGamePaused)
+        {
+            SoundManager.Instance.StopLoop(enemyMouth);
+            SoundManager.Instance.StopLoop(enemyAudio);
         }
         switch (currentState)
         {

@@ -21,6 +21,8 @@ public class SoundManager : MonoBehaviour
     public AudioSource sfxChannel;
     public AudioSource ambienceChannel;
     public AudioSource windChannel;
+    public AudioSource enemyAudio;
+    public AudioSource enemyMouth;
 
     public void StopAllSounds()
     {
@@ -59,6 +61,14 @@ public class SoundManager : MonoBehaviour
         {
             windChannel.Pause();
         }
+        if(enemyAudio != null)
+        {
+            enemyAudio.Pause();
+        }
+        if(enemyMouth != null)
+        {
+            enemyMouth.Pause();
+        }
     }
     public void UnPauseAllSounds()
     {
@@ -77,6 +87,14 @@ public class SoundManager : MonoBehaviour
         if (windChannel != null)
         {
             windChannel.Play();
+        }
+        if (enemyAudio != null)
+        {
+            enemyAudio.Play();
+        }
+        if (enemyMouth != null)
+        {
+            enemyMouth.Play ();
         }
     }
 
@@ -112,5 +130,10 @@ public class SoundManager : MonoBehaviour
     {
         musicChannel.Stop();
         musicChannel.clip = null;
+    }
+    public void FeedAudioSources(AudioSource enemy1,  AudioSource enemy2)
+    {
+        enemyMouth = enemy1;
+        enemyAudio = enemy2;
     }
 }

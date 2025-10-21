@@ -134,6 +134,13 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
+  - time: 0
+    functionName: OnCutsceneStart
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: 2
     functionName: MazeTwo
     data: 
@@ -164,6 +171,13 @@ AnimationClip:
     messageOptions: 0
   - time: 10
     functionName: StartTutorial
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 10
+    functionName: OnCutsceneEnd
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

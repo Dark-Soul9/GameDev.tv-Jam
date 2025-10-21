@@ -9,13 +9,13 @@ public class MainMenuManager : MonoBehaviour
     {
         SaveManager.StartNewGame();
         GlobalVariableManager.Instance.NewGameData();
-        SceneLoader.Instance.NextScene();
+        SceneLoader.Instance.NewScene();
     }
     public void ContinueGame()
     {
         if(SaveManager.SaveExists())
         {
-            SceneLoader.Instance.NextScene();
+            SceneLoader.Instance.ContinueScene(2);
         }
     }
     public void ExitGame()

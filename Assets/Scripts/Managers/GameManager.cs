@@ -25,6 +25,11 @@ public class GameManager : MonoBehaviour
 
     public bool isGameStarted;
     public bool isGamePaused;
+    public bool isPlayerDead;
+    public bool isAnimPlaying;
+    public bool isMaze;
+
+    public Animator cutsceneAnimator;
 
     private void Start()
     {
@@ -41,6 +46,13 @@ public class GameManager : MonoBehaviour
         {
             PauseGame();
         }
+        UIManager.Instance.ShowSkipPrompt(isAnimPlaying);
+
+        if(Input.GetKeyDown(KeyCode.Return) && isAnimPlaying)
+        {
+            cutsceneAnimator.SetTrigger("Skip Cutscene");
+        }
+
     }
     public void StartingArea()
     {
@@ -54,6 +66,7 @@ public class GameManager : MonoBehaviour
 
     public void PlayerDeathSequence()
     {
+        isPlayerDead = true;
         SoundManager.Instance.PlayOneShot(playerManager.GetComponent<PlayerSounds>().audioSource, playerManager.GetComponent<PlayerSounds>().playerDeath);
         SoundManager.Instance.StopLoop(playerManager.GetComponent<AudioSource>());
         SoundManager.Instance.PlayOneShot(playerManager.playerFlashlight.flashLight.GetComponent<AudioSource>(), playerManager.playerFlashlight.flicker);
@@ -63,6 +76,7 @@ public class GameManager : MonoBehaviour
         playerManager.playerStats.enabled = false;
         //Stop enemy AI
         //Stop enemy Sounds
+        SceneLoader.Instance.ContinueScene(2);
     }
     public void PlayerCutscene()
     {
@@ -100,6 +114,7 @@ public class GameManager : MonoBehaviour
         playerManager.playerFlashlight.enabled = true;
         playerManager.playerInteraction.enabled = true;
         playerManager.playerStats.enabled = true;
+        GlobalVariableManager.Instance.gameEnd = false;
     }
     
     public void DestroyEnemy(GameObject enemy)
@@ -108,15 +123,31 @@ public class GameManager : MonoBehaviour
     }
     public void PauseGame()
     {
+        if(isPlayerDead)
+        {
+            return;
+        }
         UIManager.Instance.PauseMenu(true);
         SoundManager.Instance.PauseAllSounds();
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.None;
+        PlayerTutorial();
         Time.timeScale = 0;
     }
     public void UnPauseGame()
     {
+        if(isAnimPlaying)
+        {
+            Time.timeScale = 1;
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
+            UIManager.Instance.PauseMenu(false);
+            SoundManager.Instance.UnPauseAllSounds();
+        }
         Time.timeScale = 1;
+        if(isMaze)
+        {
+            PlayerCutsceneEnd();
+        }
+        PlayerCutsceneEndOutside();
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         UIManager.Instance.PauseMenu(false);
