@@ -48,6 +48,9 @@ public class GlobalVariableManager : MonoBehaviour
         flashLightTutorial = SaveManager.LoadBool("FlashLightTutorial");
         sanityTutorial = SaveManager.LoadBool("SanityTutorial");
         mazeTutorial = SaveManager.LoadBool("MazeTutorial");
+        hasKey = SaveManager.LoadBool("HasKey");
+        foundKey = SaveManager.LoadBool("FoundKey");
+        foundDoor = SaveManager.LoadBool("FoundDoor");
     }
     public void SetSaveData()
     {
@@ -62,5 +65,8 @@ public class GlobalVariableManager : MonoBehaviour
         SaveManager.SaveBool("FlashLightTutorial", true);
         SaveManager.SaveBool("SanityTutorial", true);
         SaveManager.SaveBool("MazeTutorial", true);
+        SaveManager.SaveBool("HasKey", false);
+        SaveManager.SaveBool("FoundKey", false);
+        SaveManager.SaveBool("FoundDoor", false);
     }
 }

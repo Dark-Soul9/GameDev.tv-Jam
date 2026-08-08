@@ -3755,7 +3755,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -8102,9 +8102,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1427349851}
   - {fileID: 3807264896528521296}
   - {fileID: 4698978518151196373}
-  - {fileID: 1427349851}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &4787413273331493181
@@ -9144,7 +9144,7 @@ Animator:
   m_GameObject: {fileID: 3426851757788726968}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 26e9d4e02e581f14f93869a049bf080f, type: 2}
+  m_Controller: {fileID: 9100000, guid: edb0f8242623e1443923aec40826a159, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
